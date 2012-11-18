@@ -29,7 +29,7 @@ use Taco\Utils\Logging\Log;
  *
  *	@author     Martin Takáč <taco@taco-beru.name>
  */
-class Filter implements IFilter
+class Common implements IFilter
 {
 
 
