@@ -1,12 +1,21 @@
 <?php
 
 /**
- * Description of Client of http
+ * Copyright (c) 2004, 2012 Martin Takáč
  *
- * PHP version 5.3
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2, or (at your option)
+ * any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  *
  * @author     Martin Takáč <taco@taco-beru.name>
- * @copyright  Copyright (c) 2010 Martin Takáč
+ *
+ * PHP version 5.3
  */
 
 namespace Taco\Utils\Logging;
@@ -14,7 +23,7 @@ namespace Taco\Utils\Logging;
 
 
 /**
- *	Jednoduchý klient pro komunikaci s http serverem.
+ *	Filter, který určuje, zda se bude zadaná informace logovat.
  *
  *	@author     Martin Takáč <taco@taco-beru.name>
  */
@@ -36,6 +45,9 @@ class Filter implements IFilter
 
 	/**
 	 * Definice podmínky.
+	 *
+	 * @param enum Uroveň závažnosti informace.
+	 * @param string Značka skupiny. Typ logu. Maska
 	 */
 	public function __construct($level = Log::INFO, $type = self::ALL)
 	{
@@ -46,7 +58,8 @@ class Filter implements IFilter
 
 
 	/**
-	 * Zda toto zalogujeme.
+	 * Rozhoduje, zda tuto informaci budeme logovat.
+	 *
 	 * @return boolean
 	 */
 	public function filter($level, $type = self::ALL)

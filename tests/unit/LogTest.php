@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Copyright (c) 2004, 2011 Martin Takáč
+ * Copyright (c) 2004, 2012 Martin Takáč
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,6 +14,8 @@
  * GNU General Public License for more details.
  *
  * @author     Martin Takáč <taco@taco-beru.name>
+ *
+ * PHP version 5.3
  */
 
 
