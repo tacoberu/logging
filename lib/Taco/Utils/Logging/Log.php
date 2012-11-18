@@ -23,7 +23,6 @@ namespace Taco\Utils\Logging;
 
 
 
-
 /**
  *	Vlastní logger.
  *
@@ -53,7 +52,7 @@ class Log
 	 *
 	 *	@return self
 	 */
-	public function addWriter(IWriter $writer, IFilter $filter)
+	public function addWriter(Writers\IWriter $writer, Filters\IFilter $filter)
 	{
 		$this->listener[] = (object)array(
 				'writer' => $writer,

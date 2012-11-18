@@ -18,8 +18,10 @@
  * PHP version 5.3
  */
 
-namespace Taco\Utils\Logging;
+namespace Taco\Utils\Logging\Filters;
 
+
+use Taco\Utils\Logging\Log;
 
 
 /**

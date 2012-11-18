@@ -53,7 +53,7 @@ class Tests_Unit_Taco_Utils_Logging_FileWriterTest extends PHPUnit_Framework_Tes
 	 */
 	public function testFilterDefault()
 	{
-		$writer = new Logging\FileWriter(vfsStream::url("logs") . '/log.txt');
+		$writer = new Logging\Writers\File(vfsStream::url("logs") . '/log.txt');
 		$writer->write('Lorem ipsum doler ist.');
 		$writer->write('Lorem wagnum.');
 
@@ -68,7 +68,7 @@ class Tests_Unit_Taco_Utils_Logging_FileWriterTest extends PHPUnit_Framework_Tes
 	 */
 	public function testWriterFormating()
 	{
-		$writer = new Logging\FileWriter(vfsStream::url("logs") . '/log.txt', "%datetime% - %message%");
+		$writer = new Logging\Writers\File(vfsStream::url("logs") . '/log.txt', "%datetime% - %message%");
 		$writer->write('Lorem ipsum doler ist.');
 		$writer->write('Lorem wagnum.');
 
@@ -86,7 +86,7 @@ class Tests_Unit_Taco_Utils_Logging_FileWriterTest extends PHPUnit_Framework_Tes
 	 */
 	public function testWriterFormatingWithAll()
 	{
-		$writer = new Logging\FileWriter(vfsStream::url("logs") . '/log.txt', "%datetime% - [%level%] - [%type%] - %message%");
+		$writer = new Logging\Writers\File(vfsStream::url("logs") . '/log.txt', "%datetime% - [%level%] - [%type%] - %message%");
 		$writer->write('Lorem ipsum doler ist.');
 		$writer->write('Lorem wagnum.');
 

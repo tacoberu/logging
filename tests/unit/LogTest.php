@@ -69,7 +69,7 @@ class Tests_Unit_Taco_Utils_Logging_LogTest extends PHPUnit_Framework_TestCase
 	public function testFilterEmpty()
 	{
 		$logger = new Logging\Log();
-		$logger->addWriter(new Logging\OutputWriter(), new Logging\Filter(Logging\Log::INFO, 'foo'));
+		$logger->addWriter(new Logging\Writers\Output(), new Logging\Filters\Filter(Logging\Log::INFO, 'foo'));
 		$this->assertFalse($logger->canLogged());
 		ob_start();
 		$logger->log('Lorem ipsum doler ist.');
@@ -86,7 +86,7 @@ class Tests_Unit_Taco_Utils_Logging_LogTest extends PHPUnit_Framework_TestCase
 	public function testFilterDefault()
 	{
 		$logger = new Logging\Log();
-		$logger->addWriter(new Logging\OutputWriter(), new Logging\Filter(Logging\Log::INFO, 'foo'));
+		$logger->addWriter(new Logging\Writers\Output(), new Logging\Filters\Filter(Logging\Log::INFO, 'foo'));
 		$this->assertFalse($logger->canLogged());
 		$this->assertFalse($logger->canLogged('foo'));
 		$this->assertTrue($logger->canLogged('foo', Logging\Log::INFO));
@@ -105,7 +105,7 @@ class Tests_Unit_Taco_Utils_Logging_LogTest extends PHPUnit_Framework_TestCase
 	public function testFilterDefaultNotMatch()
 	{
 		$logger = new Logging\Log();
-		$logger->addWriter(new Logging\OutputWriter(), new Logging\Filter(Logging\Log::INFO, 'foo'));
+		$logger->addWriter(new Logging\Writers\Output(), new Logging\Filters\Filter(Logging\Log::INFO, 'foo'));
 		ob_start();
 		$logger->log('Lorem ipsum doler ist.', Logging\Log::INFO, 'boo');
 		$content = ob_get_contents();
@@ -120,7 +120,7 @@ class Tests_Unit_Taco_Utils_Logging_LogTest extends PHPUnit_Framework_TestCase
 	public function testFilterDefaultMultiple()
 	{
 		$logger = new Logging\Log();
-		$logger->addWriter(new Logging\OutputWriter(), new Logging\Filter(Logging\Log::INFO, 'foo'));
+		$logger->addWriter(new Logging\Writers\Output(), new Logging\Filters\Filter(Logging\Log::INFO, 'foo'));
 		ob_start();
 		$logger->log('Jedna.', Logging\Log::INFO, 'foo');
 		$logger->log('Dva.', Logging\Log::ERROR, 'foo');
@@ -139,7 +139,7 @@ class Tests_Unit_Taco_Utils_Logging_LogTest extends PHPUnit_Framework_TestCase
 	public function testFilterMultipleMathced()
 	{
 		$logger = new Logging\Log();
-		$logger->addWriter(new Logging\OutputWriter(), new Logging\Filter(Logging\Log::INFO, 'foo'));
+		$logger->addWriter(new Logging\Writers\Output(), new Logging\Filters\Filter(Logging\Log::INFO, 'foo'));
 		ob_start();
 		$logger->log('Jedna.', Logging\Log::INFO, 'foo');
 		$logger->log('Dva.', Logging\Log::ERROR, 'doo');

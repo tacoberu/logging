@@ -18,7 +18,11 @@
  * PHP version 5.3
  */
 
-namespace Taco\Utils\Logging;
+namespace Taco\Utils\Logging\Writers;
+
+
+use Taco\Utils\Logging\Log,
+	Taco\Utils\Logging\Filters\IFilter;
 
 
 
@@ -27,7 +31,7 @@ namespace Taco\Utils\Logging;
  *
  *	@author     Martin Takáč <taco@taco-beru.name>
  */
-class FileWriter implements IWriter
+class File implements IWriter
 {
 
 	/**

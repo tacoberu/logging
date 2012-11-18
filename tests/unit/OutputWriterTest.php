@@ -40,7 +40,7 @@ class Tests_Unit_Taco_Utils_Logging_OutputWriterTest extends PHPUnit_Framework_T
 	 */
 	public function testFilterDefault()
 	{
-		$writer = new Logging\OutputWriter();
+		$writer = new Logging\Writers\Output();
 		ob_start();
 		$writer->write('Lorem ipsum doler ist.');
 		$content = ob_get_contents();
@@ -55,7 +55,7 @@ class Tests_Unit_Taco_Utils_Logging_OutputWriterTest extends PHPUnit_Framework_T
 	 */
 	public function testWriterFormating()
 	{
-		$writer = new Logging\OutputWriter("%datetime% - %message%");
+		$writer = new Logging\Writers\Output("%datetime% - %message%");
 		ob_start();
 		$writer->write('Lorem ipsum doler ist.');
 		$content = ob_get_contents();
@@ -70,7 +70,7 @@ class Tests_Unit_Taco_Utils_Logging_OutputWriterTest extends PHPUnit_Framework_T
 	 */
 	public function testWriterFormatingWithAll()
 	{
-		$writer = new Logging\OutputWriter("%datetime% - [%level%] - [%type%] - %message%");
+		$writer = new Logging\Writers\Output("%datetime% - [%level%] - [%type%] - %message%");
 		ob_start();
 		$writer->write('Lorem ipsum doler ist.');
 		$content = ob_get_contents();

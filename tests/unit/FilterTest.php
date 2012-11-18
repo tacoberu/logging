@@ -24,7 +24,8 @@ require_once __dir__ . '/../../lib/Taco/Utils/Logging/Filters/Filter.php';
 require_once __dir__ . '/../../lib/Taco/Utils/Logging/Log.php';
 
 
-use Taco\Utils\Logging;
+use Taco\Utils\Logging\Filters,
+	Taco\Utils\Logging;
 
 
 /**
@@ -40,7 +41,7 @@ class Tests_Unit_Taco_Utils_Logging_FilterTest extends PHPUnit_Framework_TestCas
 	 */
 	public function testFilterDefault()
 	{
-		$filter = new Logging\Filter();
+		$filter = new Filters\Filter();
 		$this->assertFalse($filter->filter(Logging\Log::TRACE));
 		$this->assertFalse($filter->filter(Logging\Log::DEBUG));
 		$this->assertTrue($filter->filter(Logging\Log::INFO));
@@ -59,7 +60,7 @@ class Tests_Unit_Taco_Utils_Logging_FilterTest extends PHPUnit_Framework_TestCas
 	 */
 	public function testFilterTypeFoo()
 	{
-		$filter = new Logging\Filter(Logging\Log::INFO, 'foo');
+		$filter = new Filters\Filter(Logging\Log::INFO, 'foo');
 
 		$this->assertFalse($filter->filter(Logging\Log::TRACE));
 		$this->assertFalse($filter->filter(Logging\Log::DEBUG));
