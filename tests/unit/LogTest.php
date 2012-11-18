@@ -58,7 +58,7 @@ class Tests_Unit_Taco_Utils_Logging_LogTest extends PHPUnit_Framework_TestCase
 	public function testEmptyLogged()
 	{
 		$logger = new Logging\Log();
-		$this->assertFalse($logger->logged());
+		$this->assertFalse($logger->canLogged());
 	}
 
 
@@ -70,7 +70,7 @@ class Tests_Unit_Taco_Utils_Logging_LogTest extends PHPUnit_Framework_TestCase
 	{
 		$logger = new Logging\Log();
 		$logger->addWriter(new Logging\OutputWriter(), new Logging\Filter(Logging\Log::INFO, 'foo'));
-		$this->assertFalse($logger->logged());
+		$this->assertFalse($logger->canLogged());
 		ob_start();
 		$logger->log('Lorem ipsum doler ist.');
 		$content = ob_get_contents();
@@ -87,9 +87,9 @@ class Tests_Unit_Taco_Utils_Logging_LogTest extends PHPUnit_Framework_TestCase
 	{
 		$logger = new Logging\Log();
 		$logger->addWriter(new Logging\OutputWriter(), new Logging\Filter(Logging\Log::INFO, 'foo'));
-		$this->assertFalse($logger->logged());
-		$this->assertFalse($logger->logged('foo'));
-		$this->assertTrue($logger->logged('foo', Logging\Log::INFO));
+		$this->assertFalse($logger->canLogged());
+		$this->assertFalse($logger->canLogged('foo'));
+		$this->assertTrue($logger->canLogged('foo', Logging\Log::INFO));
 		ob_start();
 		$logger->log('Lorem ipsum doler ist.', Logging\Log::INFO, 'foo');
 		$content = ob_get_contents();

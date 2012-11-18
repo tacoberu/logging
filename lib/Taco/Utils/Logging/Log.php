@@ -65,11 +65,11 @@ class Log
 
 
 	/**
-	 *	Zda toto logovat.
+	 *	Zda toto bude do něčeho logováno.
 	 *
 	 *	@return bool
 	 */
-	public function logged($type = Null, $level = self::LOG)
+	public function canLogged($type = Null, $level = self::LOG)
 	{
 		foreach ($this->listener as $node) {
 			if ($node->filter->filter($level, $type)) {
@@ -82,7 +82,7 @@ class Log
 
 
 	/**
-	 *	Zaloguje
+	 *	Zaloguje pro level LOG
 	 *
 	 *	@return self
 	 */
