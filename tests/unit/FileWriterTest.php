@@ -19,8 +19,9 @@
  */
 
 
-require_once __dir__ . '/../../lib/Taco/Utils/Logging/Writers/IWriter.php';
 require_once __dir__ . '/../../lib/Taco/Utils/Logging/Filters/IFilter.php';
+require_once __dir__ . '/../../lib/Taco/Utils/Logging/Writers/IWriter.php';
+require_once __dir__ . '/../../lib/Taco/Utils/Logging/Writers/Base.php';
 require_once __dir__ . '/../../lib/Taco/Utils/Logging/Writers/File.php';
 require_once __dir__ . '/../../lib/Taco/Utils/Logging/Log.php';
 

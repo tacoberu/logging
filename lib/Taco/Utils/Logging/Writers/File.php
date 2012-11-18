@@ -31,34 +31,8 @@ use Taco\Utils\Logging\Log,
  *
  *	@author     Martin Takáč <taco@taco-beru.name>
  */
-class File implements IWriter
+class File extends Base
 {
-
-	/**
-	 * Překladová maska.
-	 */
-	private static $levelNames = array(
-			Log::TRACE => 'TRACE',
-			Log::DEBUG => 'DEBUG',
-			Log::LOG =>   'LOG  ',
-			Log::INFO =>  'INFO ',
-			Log::WARN =>  'WARN ',
-			Log::ERROR => 'ERROR',
-			Log::FATAL => 'FATAL',
-			);
-
-
-	/**
-	 * Maska výstupu.
-	 */
-	private $formating;
-
-
-	/**
-	 * Oddělovač řádek.
-	 */
-	private $sepparator;
-
 
 	/**
 	 * Soubor, do kterého se bude ukládat.
@@ -75,8 +49,7 @@ class File implements IWriter
 			throw new \InvalidArgumentException('Empty filename.');
 		}
 		$this->filename = $filename;
-		$this->formating = $formating;
-		$this->sepparator = $sepparator;
+		parent::__construct($formating, $sepparator);
 	}
 
 
@@ -88,24 +61,11 @@ class File implements IWriter
 	 */
 	public function write($message, $level = Log::INFO, $type = IFilter::ALL)
 	{
-		$content = strtr($this->formating, array(
-				'%message%' => $message,
-				'%level%' => self::formatLevel($level),
-				'%type%' => $type,
-				'%datetime%' => date('Y-m-d H:i:s'),
-				)) . $this->sepparator;
+		$content = $this->format($message, $level, $type);
 		$handle = fopen($this->filename, "a");
 		fwrite($handle, $content);
 		fclose($handle);
 	}
 
-
-	/**
-	 *	int to string
-	 */
-	private static function formatLevel($level)
-	{
-		return self::$levelNames[$level];
-	}
 
 }

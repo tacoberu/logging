@@ -30,45 +30,8 @@ use Taco\Utils\Logging\Log,
  *
  *	@author     Martin Takáč <taco@taco-beru.name>
  */
-class Output implements IWriter
+class Output extends Base
 {
-
-	/**
-	 * Překladová maska.
-	 */
-	private static $levelNames = array(
-			Log::TRACE => 'TRACE',
-			Log::DEBUG => 'DEBUG',
-			Log::LOG =>   'LOG  ',
-			Log::INFO =>  'INFO ',
-			Log::WARN =>  'WARN ',
-			Log::ERROR => 'ERROR',
-			Log::FATAL => 'FATAL',
-			);
-
-
-	/**
-	 * Maska výstupu.
-	 */
-	private $formating;
-
-
-	/**
-	 * Oddělovač řádek.
-	 */
-	private $sepparator;
-
-
-	/**
-	 * Definice podmínky.
-	 */
-	public function __construct($formating = '%message%', $sepparator = PHP_EOL)
-	{
-		$this->formating = $formating;
-		$this->sepparator = $sepparator;
-	}
-
-
 
 	/**
 	 *	Zaloguje zprávu.
@@ -77,40 +40,8 @@ class Output implements IWriter
 	 */
 	public function write($message, $level = Log::INFO, $type = IFilter::ALL)
 	{
-		// Pokud takovouto informaci požadujeme.
-		if ((strpos($this->formating, '%class%') !== False) || (strpos($this->formating, '%method%') !== False) || (strpos($this->formating, '%line%') !== False)) {
-			$trace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 3);
-			$class = $trace[2]['class'];
-			$method = $trace[2]['function'];
-			$line = $trace[1]['line'];
-			echo strtr($this->formating, array(
-					'%message%' => $message,
-					'%level%' => self::formatLevel($level),
-					'%type%' => $type,
-					'%datetime%' => date('Y-m-d H:i:s'),
-					'%class%' => $class,
-					'%method%' => $method,
-					'%line%' => $line,
-					)) . $this->sepparator;
-		}
-		else {
-			echo strtr($this->formating, array(
-					'%message%' => $message,
-					'%level%' => self::formatLevel($level),
-					'%type%' => $type,
-					'%datetime%' => date('Y-m-d H:i:s'),
-					)) . $this->sepparator;
-		}
+		echo $this->format($message, $level, $type);
 	}
 
-
-
-	/**
-	 *	int to string
-	 */
-	private static function formatLevel($level)
-	{
-		return self::$levelNames[$level];
-	}
 
 }
