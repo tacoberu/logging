@@ -19,11 +19,11 @@
  */
 
 
-require_once __dir__ . '/../../lib/Taco/Utils/Logging/IWriter.php';
-require_once __dir__ . '/../../lib/Taco/Utils/Logging/IFilter.php';
+require_once __dir__ . '/../../lib/Taco/Utils/Logging/Writers/IWriter.php';
+require_once __dir__ . '/../../lib/Taco/Utils/Logging/Writers/Output.php';
+require_once __dir__ . '/../../lib/Taco/Utils/Logging/Filters/IFilter.php';
+require_once __dir__ . '/../../lib/Taco/Utils/Logging/Filters/Filter.php';
 require_once __dir__ . '/../../lib/Taco/Utils/Logging/Log.php';
-require_once __dir__ . '/../../lib/Taco/Utils/Logging/Filter.php';
-require_once __dir__ . '/../../lib/Taco/Utils/Logging/OutputWriter.php';
 
 
 use Taco\Utils\Logging;

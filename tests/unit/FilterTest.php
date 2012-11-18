@@ -19,8 +19,8 @@
  */
 
 
-require_once __dir__ . '/../../lib/Taco/Utils/Logging/IFilter.php';
-require_once __dir__ . '/../../lib/Taco/Utils/Logging/Filter.php';
+require_once __dir__ . '/../../lib/Taco/Utils/Logging/Filters/IFilter.php';
+require_once __dir__ . '/../../lib/Taco/Utils/Logging/Filters/Filter.php';
 require_once __dir__ . '/../../lib/Taco/Utils/Logging/Log.php';
 
 

@@ -31,12 +31,13 @@
 require_once __dir__ . '/FilterTest.php';
 require_once __dir__ . '/LogTest.php';
 require_once __dir__ . '/OutputWriterTest.php';
+require_once __dir__ . '/FileWriterTest.php';
 
 
 /**
  * Hromadné testy.
  *
- * @call phpunit Suite.php Tests_Unit_Taco_Utils_Logging_Suite
+ * @call phpunit --bootstrap ../bootstrap.php Suite.php Tests_Unit_Taco_Utils_Logging_Suite
  * @author Martin Takáč <taco@taco-beru.name>
  */
 class Tests_Unit_Taco_Utils_Logging_Suite extends PHPUnit_Framework_TestSuite
@@ -55,6 +56,7 @@ class Tests_Unit_Taco_Utils_Logging_Suite extends PHPUnit_Framework_TestSuite
 		$suite->addTestSuite('Tests_Unit_Taco_Utils_Logging_FilterTest');
 		$suite->addTestSuite('Tests_Unit_Taco_Utils_Logging_LogTest');
 		$suite->addTestSuite('Tests_Unit_Taco_Utils_Logging_OutputWriterTest');
+		$suite->addTestSuite('Tests_Unit_Taco_Utils_Logging_FileWriterTest');
 
 		//	Test v podrizenenm adresari.
 		//$suite->addTest(tests_app_Suite::suite());
