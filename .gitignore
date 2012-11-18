@@ -1,5 +1,6 @@
 /archive/*
 /build/*
 /temp/*
-/testy/*
+/vendor/*
 *~
+/composer.lock
