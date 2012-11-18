@@ -152,4 +152,28 @@ class Tests_Unit_Taco_Utils_Logging_LogTest extends PHPUnit_Framework_TestCase
 
 
 
+	/**
+	 *	Logovat tři hodnoty, ale pouze dvě zapsat.
+	 */
+	public function testExtendedInfo()
+	{
+		$logger = new Logging\Log();
+		$logger->addWriter(
+				new Logging\Writers\Output("%datetime% - [%level%] - [%type%] - [%class%::%method%(%line%)] - %message%"),
+				new Logging\Filters\Common(Logging\Log::INFO, 'foo'));
+		ob_start();
+		$logger->log('Jedna.', Logging\Log::INFO, 'foo');
+		$logger->log('Dva.', Logging\Log::ERROR, 'doo');
+		$logger->log('Tri.', Logging\Log::INFO, 'foo');
+		$content = ob_get_contents();
+		ob_end_clean();
+		$this->assertEquals($content,
+				  date('Y-m-d H:i:s') . " - [INFO ] - [foo] - [Tests_Unit_Taco_Utils_Logging_LogTest::testExtendedInfo(165)] - Jedna.\n"
+				. date('Y-m-d H:i:s') . " - [INFO ] - [foo] - [Tests_Unit_Taco_Utils_Logging_LogTest::testExtendedInfo(167)] - Tri.\n"
+				);
+	}
+
+
+
+
 }
