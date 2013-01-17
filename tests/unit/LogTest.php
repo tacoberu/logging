@@ -20,6 +20,7 @@
 
 
 require_once __dir__ . '/../../lib/Taco/Utils/Logging/Writers/IWriter.php';
+require_once __dir__ . '/../../lib/Taco/Utils/Logging/Writers/Base.php';
 require_once __dir__ . '/../../lib/Taco/Utils/Logging/Writers/Output.php';
 require_once __dir__ . '/../../lib/Taco/Utils/Logging/Filters/IFilter.php';
 require_once __dir__ . '/../../lib/Taco/Utils/Logging/Filters/Common.php';
@@ -34,7 +35,6 @@ use Taco\Utils\Logging;
  */
 class Tests_Unit_Taco_Utils_Logging_LogTest extends PHPUnit_Framework_TestCase
 {
-
 
 
 	/**
